@@ -1,0 +1,43 @@
+create database ab;
+use ab;
+CREATE TABLE Students (
+    StudentID INT PRIMARY KEY,  
+    FirstName VARCHAR(50) NOT NULL,            
+    LastName VARCHAR(50) NOT NULL,             
+    DateOfBirth DATE NOT NULL,                 
+    Email VARCHAR(100),   
+    grade varchar(15)
+);
+CREATE TABLE Teachers (
+    TeacherID INT PRIMARY KEY,  
+    FirstName VARCHAR(50) NOT NULL,            
+    LastName VARCHAR(50) NOT NULL,             
+	gender varchar(50),                               
+    Department VARCHAR(50)                    
+);
+
+CREATE TABLE Courses (
+    CourseID INT PRIMARY KEY ,   
+    CourseName VARCHAR(100) NOT NULL,         
+    Credits INT,                              
+    TeacherID INT,                             
+    FOREIGN KEY (TeacherID) REFERENCES Teachers(TeacherID) ON  DELETE SET NULL
+);
+INSERT INTO Students (StudentID,FirstName, LastName, DateOfBirth, Email,grade)
+VALUES
+('11','John', 'Doe', '2005-03-12','john.doe@example.com', 'A'),
+('12','ram', 'kumar', '2004-07-22', 'jane.smith@example.com', 'B'),
+('13','michael','Johnson', '2006-11-30','michael.johnson@example.com', 'B');
+INSERT INTO Teachers (TeacherID,FirstName, LastName, Gender, Department)
+VALUES
+(1,'Alice', 'Brown', 'Female',  'Mathematics'),
+(2,'Bob', 'Davis', 'Male', 'Science'),
+(3,'mohana', 'priya', 'Female',  'History');
+INSERT INTO Courses(CourseID,CourseName, Credits, TeacherID)
+VALUES
+(101,'Algebra I', 3, 1),
+(102,'Biology 101', 4, 2), 
+(103,'World History', 3, 3);  
+
+
+
